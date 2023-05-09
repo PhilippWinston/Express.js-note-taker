@@ -1,13 +1,16 @@
 const app = require('express').Router();
-const { updateNote, removeNote } = require('../../lib/note'); 
-const { notes } = require('../../db/db.json');
+const { updateNote, removeNote, getNotes, readAndAppend} = require('../../lib/note'); 
+// const { notes } = require('../../db/db.json');
 const { v4: uuidv4 } = require('uuid');
-const { readAndAppend } = require('../../lib/note');
+let notes = {}
+getNotes('./db/db.json',(data) =>{
+  notes = data
+})
 
 app.get('/notes', (req, res) => {
-  let thing = notes
-  console.log(thing)
-  res.json(thing);
+  getNotes('./db/db.json', (data) => {
+    res.json(data)
+  })
   
 });
 
