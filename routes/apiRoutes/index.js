@@ -1,5 +1,5 @@
 const app = require('express').Router();
-const { updateNote, deleteNote } = require('../../lib/note'); 
+const { updateNote, removeNote } = require('../../lib/note'); 
 const { notes } = require('../../db/db.json');
 const { v4: uuidv4 } = require('uuid');
 const { readAndAppend } = require('../../lib/note');
@@ -22,7 +22,7 @@ app.post('/notes', (req, res) => {
 
 app.delete('/notes/:id', (req, res) => {
   const noteId = req.params.id;
-  deleteNote(noteId, notes);
+  removeNote(noteId, notes);
   res.sendStatus(200);
 });
 
