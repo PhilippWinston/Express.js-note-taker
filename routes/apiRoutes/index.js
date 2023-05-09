@@ -5,7 +5,10 @@ const { v4: uuidv4 } = require('uuid');
 const { readAndAppend } = require('../../lib/note');
 
 app.get('/notes', (req, res) => {
-  res.json(notes);
+  let thing = notes
+  console.log(thing)
+  res.json(thing);
+  
 });
 
 app.post('/notes', (req, res) => {
@@ -22,7 +25,7 @@ app.post('/notes', (req, res) => {
 
 app.delete('/notes/:id', (req, res) => {
   const noteId = req.params.id;
-  removeNote(noteId, notes);
+  removeNote(noteId, "./db/db.json");
   res.sendStatus(200);
 });
 
