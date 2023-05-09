@@ -20,14 +20,14 @@ app.post('/notes', (req, res) => {
   res.json(newNote);
 });
 
-app.delete('api/notes/:id', (req, res) => {
+app.delete('/api/notes/:id', (req, res) => {
   const noteId = req.params.id;
   removeNote(noteId, notes);
   res.sendStatus(200);
 });
 
 
-app.put("api/notes/:id", (req, res) => {
+app.put("/api/notes/:id", (req, res) => {
   const noteId = req.params.id;
   const updatedNote = req.body;
 
